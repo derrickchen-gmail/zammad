@@ -26,7 +26,9 @@ jobs:
           - debian:12
           - debian:13
           - el:9
+          - el:10
           - sles:15
+          - sles:16
           - ubuntu:22.04
           - ubuntu:24.04
     steps:
