@@ -1,3 +1,4 @@
+<!-- markdownlint-disable MD025 -->
 # CLAUDE.md — Zammad Repo Governance
 
 ## Purpose
@@ -20,6 +21,35 @@ This repo follows the same operational philosophy as mPorts:
 - CI enforced
 - No silent architectural drift
 - Agent-friendly guardrails
+
+---
+
+# Local Dev Environment
+
+## Single Local Instance
+
+There must be only **ONE** running Zammad instance on this machine at a
+time. Never spin up a parallel docker stack alongside the native dev
+server, or vice versa — confusion about which port is serving which code
+has bitten us before.
+
+- **Canonical local URL: <http://localhost:3188>**
+- **Default port: 3188** (set via `ZAMMAD_RAILS_PORT=3188` when starting
+  Procfile.dev / overmind / foreman)
+- Do NOT use port 3000 (the Rails default) or 8080 (the docker-compose
+  default). Reserve those for other projects.
+- The local dev instance runs natively (Procfile.dev via overmind) so it
+  serves the on-disk code in this checkout, not a pre-built image.
+- The official `zammad/zammad-docker-compose` stack runs **frozen,
+  pre-built images** (`ghcr.io/zammad/zammad:*`). It is fine for "see
+  upstream Zammad" but ignores any local edits. If you bring it up for a
+  one-off purpose, tear it down (`docker compose down`) before continuing
+  local development.
+- An AI agent must NEVER stand up a second instance "for convenience" or
+  fall back to docker when a code change does not appear locally. The
+  correct response to "my edit isn't showing" is to investigate the
+  native dev server (overmind logs, asset pipeline, vite dev), not to
+  start a parallel stack on another port.
 
 ---
 
