@@ -40,7 +40,7 @@
 
       <label class="cp-field cp-field--full">
         <span class="cp-field-lbl"><%- @T('Description') %></span>
-        <textarea class="<%= 'cp-field--err' if @errors?.body %>" name="body" rows="7"
+        <textarea class="<%= 'cp-field--err' if @errors?.body %>" name="body" rows="17"
                   placeholder="<%- @T('What were you trying to do? What happened instead? Include any steps to reproduce.') %>"></textarea>
         <% if @errors?.body: %><span class="cp-field-err"><%- @errors.body %></span><% end %>
       </label>
