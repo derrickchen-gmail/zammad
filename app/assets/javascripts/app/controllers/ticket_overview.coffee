@@ -88,11 +88,15 @@ class App.TicketOverview extends App.Controller
   show: (params) =>
     @keyboardOn()
 
-    # highlight navbar
-    @navupdate '#ticket/view'
-
     # redirect to last overview if we got called in first level
     @view = params['view']
+
+    # highlight navbar — use the specific view so sidebar queue items
+    # get the is-active class, not just the generic "Overviews" link.
+    if @view
+      @navupdate "#ticket/view/#{@view}"
+    else
+      @navupdate '#ticket/view'
     if !@view && @viewLast
       @navigate "#ticket/view/#{@viewLast}", { hideCurrentLocationFromHistory: true }
       return
