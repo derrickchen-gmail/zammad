@@ -92,7 +92,8 @@ class Navigation extends App.Controller
       total += count if link is 'my_assigned' or link is 'all_unassigned'
       $(el).text(if count > 0 then count else '')
 
-    overviewsTotal = _.reduce(overviews, ((memo, o) -> memo + (o.count or 0)), 0)
+    openOverview = _.find(overviews, (o) -> o.link is 'all_open')
+    overviewsTotal = openOverview?.count or 0
     @$('.js-ac-overviews-count').text(if overviewsTotal > 0 then overviewsTotal else '')
 
   renderMenu: =>
