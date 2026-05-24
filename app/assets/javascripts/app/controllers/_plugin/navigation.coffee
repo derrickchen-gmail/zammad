@@ -594,7 +594,7 @@ class Navigation extends App.Controller
     else
       @$('.is-active').removeClass('is-active')
     return if !url || url is '#'
-    @$(".js-menu [href=\"#{url}\"], .tasks [href=\"#{url}\"], .cp-nav-item[href=\"#{url}\"]").addClass('is-active')
+    @$(".js-menu [href=\"#{url}\"], .tasks [href=\"#{url}\"], .ac-nav-item[href=\"#{url}\"], .cp-nav-item[href=\"#{url}\"]").addClass('is-active')
 
   recentViewNavbarItemsRebuild: =>
 
