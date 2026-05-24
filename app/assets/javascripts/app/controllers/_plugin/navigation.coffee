@@ -24,6 +24,7 @@ class Navigation extends App.Controller
     'click .js-onclick': 'click'
     'click .js-navigation-toggle-button': 'toggleClicked'
     'click [data-filter]': 'onSidebarFilter'
+    'click .js-user-menu-toggle': 'toggleUserMenu'
 
   constructor: ->
     super
@@ -155,6 +156,20 @@ class Navigation extends App.Controller
     return if !bucket
     App.Event.trigger('customer:ticket:filter', bucket)
     @navigate '#ticket/view/my_tickets'
+
+  toggleUserMenu: (e) =>
+    e.stopPropagation()
+    menu = @$('.cp-nav-user-menu')
+    isOpen = menu.is(':visible')
+    if isOpen
+      menu.slideUp(120)
+      @$('.cp-nav-user').removeClass('is-open')
+    else
+      menu.slideDown(120)
+      @$('.cp-nav-user').addClass('is-open')
+      $(document).one 'click', =>
+        menu.slideUp(120)
+        @$('.cp-nav-user').removeClass('is-open')
 
   click: (e) ->
     @preventDefaultAndStopPropagation(e)

@@ -17080,7 +17080,7 @@ body.is-customer-portal {
     border: 1px solid var(--cp-border);
     border-radius: 10px;
     padding: 8px 10px;
-    margin: 0 0 4px;
+    margin: 0;
     display: flex;
     align-items: center;
     gap: 10px;
@@ -17092,9 +17092,10 @@ body.is-customer-portal {
   }
 
   .cp-nav-user:hover,
-  .cp-nav-user:focus {
-    background: var(--cp-hover, rgba(0, 0, 0, 0.03));
-    border-color: var(--cp-border-strong, var(--cp-border));
+  .cp-nav-user:focus,
+  .cp-nav-user.is-open {
+    background: var(--cp-surface-3);
+    border-color: var(--cp-border-2);
     text-decoration: none;
     color: var(--cp-ink);
   }
@@ -17142,24 +17143,65 @@ body.is-customer-portal {
     text-overflow: ellipsis;
   }
 
-  .cp-nav-user-signout {
+  .cp-nav-user-chevron {
     flex: 0 0 auto;
-    width: 18px;
-    height: 18px;
-    color: var(--cp-ink-3, var(--cp-ink-2));
+    width: 16px;
+    height: 16px;
+    color: var(--cp-ink-3);
     display: inline-flex;
     align-items: center;
     justify-content: center;
+    transition: transform 0.15s ease;
   }
 
-  .cp-nav-user-signout .icon {
-    width: 16px;
-    height: 16px;
+  .cp-nav-user-chevron .icon {
+    width: 14px;
+    height: 14px;
     fill: currentColor;
   }
 
-  .cp-nav-user:hover .cp-nav-user-signout {
+  .cp-nav-user.is-open .cp-nav-user-chevron {
+    transform: rotate(180deg);
+  }
+
+  .cp-nav-user-menu {
+    list-style: none;
+    margin: 0 0 6px;
+    padding: 4px;
+    background: var(--cp-surface);
+    border: 1px solid var(--cp-border);
+    border-radius: 10px;
+    box-shadow: 0 2px 12px hsla(210, 14%, 18%, 0.08);
+  }
+
+  .cp-nav-user-menu > li > a {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 9px 12px;
+    border-radius: 6px;
+    text-decoration: none;
     color: var(--cp-ink);
+    font-size: 13.5px;
+    font-weight: 500;
+    transition: background 0.12s ease;
+  }
+
+  .cp-nav-user-menu > li > a:hover {
+    background: var(--cp-surface-3);
+    color: var(--cp-ink);
+  }
+
+  .cp-nav-user-menu-divider {
+    height: 1px;
+    background: var(--cp-border);
+    margin: 4px 8px;
+  }
+
+  .cp-nav-user-menu-signout .icon {
+    width: 15px;
+    height: 15px;
+    fill: var(--cp-ink-3);
   }
 
   // ---------------------------------------------------------------------------

@@ -47,7 +47,7 @@
   <div class="cp-nav-spacer"></div>
 
   <% if !_.isEmpty(@user): %>
-    <a class="cp-nav-user" href="#logout" title="<%- @Ti('Sign out') %>">
+    <div class="cp-nav-user js-user-menu-toggle">
       <span class="cp-nav-user-avatar js-avatar"></span>
       <span class="cp-nav-user-text">
         <span class="cp-nav-user-name"><%= @userFullname %></span>
@@ -55,7 +55,12 @@
           <% if @userRoleLabel: %><%= @userRoleLabel %> · <% end %><%= @userEmail %>
         </span>
       </span>
-      <span class="cp-nav-user-signout"><%- @Icon('signout') %></span>
-    </a>
+      <span class="cp-nav-user-chevron"><%- @Icon('arrow-up') %></span>
+    </div>
+    <ul class="cp-nav-user-menu" style="display: none;">
+      <li><a href="#profile"><%- @T('Profile') %></a></li>
+      <li class="cp-nav-user-menu-divider"></li>
+      <li><a href="#logout" class="cp-nav-user-menu-signout"><%- @Icon('signout') %> <%- @T('Sign out') %></a></li>
+    </ul>
   <% end %>
 </div>
