@@ -69,6 +69,15 @@
   <div class="ac-nav-spacer"></div>
 
   <% if !_.isEmpty(@user): %>
-    <ul class="user-menu navbar-items-personal ac-nav-user"></ul>
+    <a class="ac-nav-user" href="#logout" title="<%- @Ti('Sign out') %>">
+      <span class="ac-nav-user-avatar js-avatar"></span>
+      <span class="ac-nav-user-text">
+        <span class="ac-nav-user-name"><%= @userFullname %></span>
+        <span class="ac-nav-user-meta">
+          <% if @userRoleLabel: %><%= @userRoleLabel %> · <% end %><%= @userEmail %>
+        </span>
+      </span>
+      <span class="ac-nav-user-signout"><%- @Icon('signout') %></span>
+    </a>
   <% end %>
 </div>

@@ -290,6 +290,23 @@ class Navigation extends App.Controller
     else
       ''
 
+    # Compute a single role label for the footer user card.
+    userRoleLabel = if isAdmin
+      __('Admin')
+    else if isAgent
+      __('Agent')
+    else if isCustomer
+      __('Customer')
+    else
+      ''
+
+    userFullname = ''
+    userEmail    = ''
+    currentUser  = App.User.current()
+    if currentUser
+      userFullname = currentUser.displayName?() or ''
+      userEmail    = currentUser.email or ''
+
     navigation = $(App.view(template)(
       user: user
       isCustomer: isCustomer
@@ -298,6 +315,9 @@ class Navigation extends App.Controller
       showBrand: isCustomer or isAgent
       brandTitle: 'Helpdesk'
       brandSubtitle: brandSubtitle
+      userFullname: userFullname
+      userEmail: userEmail
+      userRoleLabel: userRoleLabel
     ))
 
     @taskbar?.releaseController()
