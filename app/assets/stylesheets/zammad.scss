@@ -16283,6 +16283,8 @@ body.is-customer-portal {
     color: var(--cp-ink);
     background: var(--cp-bg);
     min-height: 100%;
+    max-width: 1100px;
+    margin: 0 auto;
   }
 
   .cp-screen-head {
@@ -16290,7 +16292,7 @@ body.is-customer-portal {
     align-items: flex-end;
     justify-content: space-between;
     gap: 16px;
-    padding: 22px 28px 16px;
+    padding: 28px 32px 20px;
     border-bottom: 1px solid var(--cp-border);
   }
 
@@ -16362,16 +16364,16 @@ body.is-customer-portal {
   .cp-stat-row {
     display: grid;
     grid-template-columns: repeat(5, 1fr);
-    gap: 10px;
-    padding: 16px 28px 6px;
+    gap: 14px;
+    padding: 24px 32px 10px;
   }
 
   .cp-stat {
     text-align: left;
     background: var(--cp-surface);
     border: 1px solid var(--cp-border);
-    border-radius: 8px;
-    padding: 12px 14px;
+    border-radius: 10px;
+    padding: 18px 20px;
     text-decoration: none;
     color: var(--cp-ink);
     transition: border-color .12s ease;
@@ -16384,16 +16386,16 @@ body.is-customer-portal {
   }
 
   .cp-stat-val {
-    font-size: 26px;
+    font-size: 30px;
     font-weight: 700;
     letter-spacing: -0.02em;
     line-height: 1.1;
   }
 
   .cp-stat-lbl {
-    font-size: 12px;
+    font-size: 13px;
     color: var(--cp-ink-3);
-    margin-top: 4px;
+    margin-top: 6px;
     display: flex;
     align-items: center;
     gap: 6px;
@@ -16429,8 +16431,8 @@ body.is-customer-portal {
   .cp-dash-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 14px;
-    padding: 14px 28px 28px;
+    gap: 18px;
+    padding: 20px 32px 36px;
   }
 
   .cp-card {
@@ -16440,18 +16442,19 @@ body.is-customer-portal {
     overflow: hidden;
     display: flex;
     flex-direction: column;
+    min-height: 340px;
   }
 
   .cp-card-head {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 14px 16px;
+    padding: 16px 20px;
     border-bottom: 1px solid var(--cp-border);
   }
 
   .cp-card-head h2 {
-    font-size: 14px;
+    font-size: 15px;
     margin: 0;
     font-weight: 600;
     letter-spacing: -0.005em;
@@ -16480,7 +16483,7 @@ body.is-customer-portal {
 
   .cp-list-row {
     display: block;
-    padding: 12px 16px;
+    padding: 14px 20px;
     text-decoration: none;
     color: var(--cp-ink);
     transition: background .12s ease;
