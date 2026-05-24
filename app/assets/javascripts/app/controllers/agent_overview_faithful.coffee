@@ -39,12 +39,12 @@ class App.AgentOverviewFaithful extends App.Controller
     if @overviewIndexBindId
       App.OverviewIndexCollection.unbindById(@overviewIndexBindId)
     if @collectionBindId and @collectionView
-      App.OverviewListCollection.unbindById(@collectionBindId)
+      App.OverviewListCollection.unbind(@collectionBindId)
     super
 
   subscribeView: (view) =>
     if @collectionBindId
-      App.OverviewListCollection.unbindById(@collectionBindId)
+      App.OverviewListCollection.unbind(@collectionBindId)
     @collectionView = view
     @collectionBindId = App.OverviewListCollection.bind(view, @onCollection)
     App.OverviewListCollection.fetch(view)
@@ -52,6 +52,9 @@ class App.AgentOverviewFaithful extends App.Controller
   onCollection: (data) =>
     @data = data
     @render()
+
+  show: (params = {}) =>
+    @update(params)
 
   update: (params = {}) =>
     if params.view and params.view isnt @view
