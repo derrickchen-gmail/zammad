@@ -17057,13 +17057,88 @@ body.is-customer-portal {
   .cp-nav-user {
     background: var(--cp-surface);
     border: 1px solid var(--cp-border);
-    border-radius: 8px;
-    padding: 6px;
+    border-radius: 10px;
+    padding: 8px 10px;
     margin: 0 0 4px;
     display: flex;
     align-items: center;
-    gap: 8px;
+    gap: 10px;
     list-style: none;
+    text-decoration: none;
+    color: var(--cp-ink);
+    cursor: pointer;
+    transition: background 0.15s ease, border-color 0.15s ease;
+  }
+
+  .cp-nav-user:hover,
+  .cp-nav-user:focus {
+    background: var(--cp-hover, rgba(0, 0, 0, 0.03));
+    border-color: var(--cp-border-strong, var(--cp-border));
+    text-decoration: none;
+    color: var(--cp-ink);
+  }
+
+  .cp-nav-user-avatar {
+    flex: 0 0 auto;
+    width: 32px;
+    height: 32px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .cp-nav-user-avatar .avatar {
+    width: 32px !important;
+    height: 32px !important;
+    font-size: 12px !important;
+    line-height: 32px !important;
+  }
+
+  .cp-nav-user-text {
+    flex: 1;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+  }
+
+  .cp-nav-user-name {
+    font-weight: 600;
+    font-size: 13px;
+    color: var(--cp-ink);
+    line-height: 1.2;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .cp-nav-user-meta {
+    font-size: 11.5px;
+    color: var(--cp-ink-3, var(--cp-ink-2));
+    line-height: 1.2;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .cp-nav-user-signout {
+    flex: 0 0 auto;
+    width: 18px;
+    height: 18px;
+    color: var(--cp-ink-3, var(--cp-ink-2));
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .cp-nav-user-signout .icon {
+    width: 16px;
+    height: 16px;
+    fill: currentColor;
+  }
+
+  .cp-nav-user:hover .cp-nav-user-signout {
+    color: var(--cp-ink);
   }
 
   // ---------------------------------------------------------------------------
@@ -17881,7 +17956,93 @@ body.is-agent-console {
 
   .ac-nav-spacer { flex: 1; }
 
-  .ac-nav-user,
+  .ac-nav-user {
+    background: var(--ac-surface);
+    border: 1px solid var(--ac-border);
+    border-radius: 10px;
+    padding: 8px 10px;
+    margin: 0 0 4px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    list-style: none;
+    text-decoration: none;
+    color: var(--ac-ink);
+    cursor: pointer;
+    transition: background 0.15s ease, border-color 0.15s ease;
+  }
+
+  .ac-nav-user:hover,
+  .ac-nav-user:focus {
+    background: var(--ac-hover, rgba(0, 0, 0, 0.03));
+    border-color: var(--ac-border-strong, var(--ac-border));
+    text-decoration: none;
+    color: var(--ac-ink);
+  }
+
+  .ac-nav-user-avatar {
+    flex: 0 0 auto;
+    width: 32px;
+    height: 32px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .ac-nav-user-avatar .avatar {
+    width: 32px !important;
+    height: 32px !important;
+    font-size: 12px !important;
+    line-height: 32px !important;
+  }
+
+  .ac-nav-user-text {
+    flex: 1;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+  }
+
+  .ac-nav-user-name {
+    font-weight: 600;
+    font-size: 13px;
+    color: var(--ac-ink);
+    line-height: 1.2;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .ac-nav-user-meta {
+    font-size: 11.5px;
+    color: var(--ac-ink-3, var(--ac-ink-2));
+    line-height: 1.2;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .ac-nav-user-signout {
+    flex: 0 0 auto;
+    width: 18px;
+    height: 18px;
+    color: var(--ac-ink-3, var(--ac-ink-2));
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .ac-nav-user-signout .icon {
+    width: 16px;
+    height: 16px;
+    fill: currentColor;
+  }
+
+  .ac-nav-user:hover .ac-nav-user-signout {
+    color: var(--ac-ink);
+  }
+
   .navbar-items-personal {
     background: var(--ac-surface);
     border: 1px solid var(--ac-border);

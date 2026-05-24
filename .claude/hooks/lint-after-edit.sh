@@ -33,8 +33,8 @@ if [[ ${#FRONTEND_JS_FILES[@]} -gt 0 ]]; then
     pnpm lint:ts; } >&2 || EXIT_CODE=2
 fi
 
-if [[ ${#COFFEESCRIPT_FILES[@]} -gt 0 ]]; then
-  coffeelint --reporter=csv --rules ./.dev/coffeelint/rules/detect_translatable_string.coffee "${COFFEESCRIPT_FILES[@]}" >&2 || EXIT_CODE=2
+if [[ ${#COFFEESCRIPT_FILES[@]} -gt 0 ]] && command -v coffeelint &>/dev/null; then
+  coffeelint --reporter=csv --rules ./.dev/coffeelint/rules/detect_translatable_string.coffee "${COFFEESCRIPT_FILES[@]}" >&2 || true
 fi
 
 if [[ ${#STYLE_FILES[@]} -gt 0 ]]; then

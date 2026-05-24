@@ -47,6 +47,15 @@
   <div class="cp-nav-spacer"></div>
 
   <% if !_.isEmpty(@user): %>
-    <ul class="user-menu navbar-items-personal cp-nav-user"></ul>
+    <a class="cp-nav-user" href="#logout" title="<%- @Ti('Sign out') %>">
+      <span class="cp-nav-user-avatar js-avatar"></span>
+      <span class="cp-nav-user-text">
+        <span class="cp-nav-user-name"><%= @userFullname %></span>
+        <span class="cp-nav-user-meta">
+          <% if @userRoleLabel: %><%= @userRoleLabel %> · <% end %><%= @userEmail %>
+        </span>
+      </span>
+      <span class="cp-nav-user-signout"><%- @Icon('signout') %></span>
+    </a>
   <% end %>
 </div>
