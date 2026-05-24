@@ -18086,24 +18086,64 @@ body.is-agent-console {
     text-overflow: ellipsis;
   }
 
-  .ac-nav-user-signout {
+  .ac-nav-user-chevron {
     flex: 0 0 auto;
-    width: 18px;
-    height: 18px;
+    width: 16px;
+    height: 16px;
     color: var(--ac-ink-3, var(--ac-ink-2));
     display: inline-flex;
     align-items: center;
     justify-content: center;
+    transition: transform 0.15s ease;
   }
 
-  .ac-nav-user-signout .icon {
-    width: 16px;
-    height: 16px;
+  .ac-nav-user-chevron .icon {
+    width: 14px;
+    height: 14px;
     fill: currentColor;
   }
 
-  .ac-nav-user:hover .ac-nav-user-signout {
+  .ac-nav-user:hover .ac-nav-user-chevron { color: var(--ac-ink); }
+  .ac-nav-user.is-open .ac-nav-user-chevron { transform: rotate(180deg); }
+
+  .ac-nav-user-menu {
+    list-style: none;
+    margin: 0 0 6px;
+    padding: 4px;
+    background: var(--ac-surface);
+    border: 1px solid var(--ac-border);
+    border-radius: 10px;
+    box-shadow: 0 2px 12px hsla(210, 14%, 18%, 0.08);
+  }
+
+  .ac-nav-user-menu > li > a {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 9px 12px;
+    border-radius: 6px;
+    text-decoration: none;
     color: var(--ac-ink);
+    font-size: 13.5px;
+    font-weight: 500;
+    transition: background 0.12s ease;
+  }
+
+  .ac-nav-user-menu > li > a:hover {
+    background: var(--ac-surface-3);
+    color: var(--ac-ink);
+  }
+
+  .ac-nav-user-menu-divider {
+    height: 1px;
+    background: var(--ac-border);
+    margin: 4px 8px;
+  }
+
+  .ac-nav-user-menu-signout .icon {
+    width: 15px;
+    height: 15px;
+    fill: var(--ac-ink-3);
   }
 
   .navbar-items-personal {

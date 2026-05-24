@@ -159,17 +159,18 @@ class Navigation extends App.Controller
 
   toggleUserMenu: (e) =>
     e.stopPropagation()
-    menu = @$('.cp-nav-user-menu')
+    menu = @$('.cp-nav-user-menu, .ac-nav-user-menu').filter(':first')
+    userEl = @$('.cp-nav-user, .ac-nav-user').filter(':first')
     isOpen = menu.is(':visible')
     if isOpen
       menu.slideUp(120)
-      @$('.cp-nav-user').removeClass('is-open')
+      userEl.removeClass('is-open')
     else
       menu.slideDown(120)
-      @$('.cp-nav-user').addClass('is-open')
+      userEl.addClass('is-open')
       $(document).one 'click', =>
         menu.slideUp(120)
-        @$('.cp-nav-user').removeClass('is-open')
+        userEl.removeClass('is-open')
 
   click: (e) ->
     @preventDefaultAndStopPropagation(e)
