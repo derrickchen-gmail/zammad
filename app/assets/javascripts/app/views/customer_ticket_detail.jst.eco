@@ -25,7 +25,7 @@
       <% if @articles.length > 0: %>
         <% for m in @articles: %>
         <div class="cp-msg cp-msg--<%= if m.isAgent then 'agent' else 'me' %>">
-          <div class="cp-msg-avatar"><%- m.displayAuthor?.split(' ').slice(0,2).map((s) -> s[0]).join('').toUpperCase() or '?' %></div>
+          <div class="cp-msg-avatar"><%= m.initials %></div>
           <div class="cp-msg-body">
             <div class="cp-msg-meta">
               <strong><%= m.displayAuthor %></strong>
