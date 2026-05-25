@@ -34,6 +34,17 @@
               <% if m.internal: %><span class="cp-tag cp-tag--internal"><%- @T('Internal') %></span><% end %>
             </div>
             <div class="cp-msg-text"><%- m.body %></div>
+            <% if m.attachments and m.attachments.length > 0: %>
+            <div class="cp-msg-attachments">
+              <% for att in m.attachments: %>
+              <a class="cp-attachment" href="<%= att.url %>" target="_blank" download="<%= att.filename %>">
+                <span class="cp-attachment-icon">📎</span>
+                <span class="cp-attachment-name"><%= att.filename %></span>
+                <span class="cp-attachment-size">(<%= Math.round(att.size / 1024) %> KB)</span>
+              </a>
+              <% end %>
+            </div>
+            <% end %>
           </div>
         </div>
         <% end %>
