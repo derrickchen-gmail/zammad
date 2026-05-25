@@ -147,6 +147,18 @@ class App.CustomerTicketDetail extends App.Controller
         user?.fullname or article.from?.replace(/\s*<[^>]+>/, '') or __('Customer')
     { isAgent: !!isAgent, name: name }
 
+  initialsOf: (article) ->
+    user = if article.created_by_id then App.User.find(article.created_by_id) else null
+    return '?' if !user
+    if user.firstname and user.lastname
+      (user.firstname[0] + user.lastname[0]).toUpperCase()
+    else if user.firstname
+      user.firstname.slice(0, 2).toUpperCase()
+    else if user.email
+      user.email[0].toUpperCase()
+    else
+      '?'
+
   decoratedArticles: ->
     return [] if !@ticket_article_ids or @ticket_article_ids.length is 0
     rows = []
@@ -169,6 +181,7 @@ class App.CustomerTicketDetail extends App.Controller
         created_at:    a.created_at
         isAgent:       who.isAgent
         displayAuthor: who.name
+        initials:      @initialsOf(a)
         attachments:   attachments
     rows
 
