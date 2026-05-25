@@ -16,6 +16,8 @@ class App.CustomerTicketDetail extends App.Controller
     'click .js-resolve':   'onResolve'
     'click .js-reopen':    'onReopen'
     'input .js-reply-body':'onReplyInput'
+    'change .js-reply-file':'onFileSelect'
+    'click .js-remove-file':'onFileRemove'
 
   constructor: (params) ->
     super
@@ -31,6 +33,8 @@ class App.CustomerTicketDetail extends App.Controller
       return
 
     @draft = ''
+    @form_id = App.ControllerForm.formId()
+    @attachments = []
     @ticket_article_ids = []
     @loadTicket()
 
@@ -65,6 +69,56 @@ class App.CustomerTicketDetail extends App.Controller
   onReplyInput: (e) =>
     @draft = e.target.value
 
+  onFileSelect: (e) =>
+    files = Array.from(e.target.files or [])
+    return if !files.length
+    for file in files
+      @uploadFile(file)
+    e.target.value = ''
+
+  uploadFile: (file) =>
+    formData = new FormData()
+    formData.append('File', file)
+    formData.append('form_id', @form_id)
+    @ajax(
+      id:          "upload_#{@form_id}_#{file.name}"
+      type:        'POST'
+      url:         "#{@apiPath}/upload_caches/#{@form_id}"
+      data:        formData
+      processData: false
+      contentType: false
+      success: (data) =>
+        @attachments.push(
+          id:       data.data?.id
+          filename: file.name
+          size:     file.size
+        )
+        @renderAttachments()
+    )
+
+  onFileRemove: (e) =>
+    e.preventDefault()
+    idx = parseInt($(e.currentTarget).data('idx'), 10)
+    att = @attachments[idx]
+    if att?.id
+      @ajax(
+        type: 'DELETE'
+        url:  "#{@apiPath}/upload_caches/#{@form_id}/items/#{att.id}"
+      )
+    @attachments.splice(idx, 1)
+    @renderAttachments()
+
+  renderAttachments: =>
+    container = @el.find('.js-reply-attachments')
+    return if !container.length
+    html = ''
+    for att, i in @attachments
+      size = if att.size < 1024 then "#{att.size} B"
+      else if att.size < 1024 * 1024 then "#{Math.round(att.size / 1024)} KB"
+      else "#{(att.size / 1024 / 1024).toFixed(1)} MB"
+      html += "<span class=\"cp-reply-file\">📎 #{_.escape(att.filename)} (#{size}) <a class=\"js-remove-file\" data-idx=\"#{i}\" href=\"#\">×</a></span>"
+    container.html(html)
+
   onDiscard: (e) =>
     e.preventDefault()
     @draft = ''
@@ -87,11 +141,13 @@ class App.CustomerTicketDetail extends App.Controller
       body:        @draft
       content_type: 'text/plain'
       internal:    false
-      form_id:     App.ControllerForm.formId()
+      form_id:     @form_id
     )
     article.save(
       done: =>
         @draft = ''
+        @attachments = []
+        @form_id = App.ControllerForm.formId()
         @sending = false
         @loadTicket()
         @notify(type: 'success', msg: __('Reply sent.'))

@@ -16918,6 +16918,44 @@ body.is-customer-portal {
     box-shadow: 0 0 0 3px var(--cp-accent-ring);
   }
 
+  .cp-reply-attachments {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    padding: 0 2px;
+  }
+
+  .cp-reply-file {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 13px;
+    color: var(--cp-ink-2);
+    background: var(--cp-surface-2, #f5f5f5);
+    border-radius: 6px;
+    padding: 4px 10px;
+  }
+
+  .cp-reply-file a {
+    color: var(--cp-ink-3);
+    text-decoration: none;
+    font-weight: 600;
+    margin-left: 2px;
+  }
+
+  .cp-reply-file a:hover { color: var(--cp-ink); }
+
+  .cp-attach-trigger {
+    cursor: pointer;
+    color: var(--cp-ink-3);
+    font-size: 13px;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+  }
+
+  .cp-attach-trigger:hover { color: var(--cp-ink-2); }
+
   .cp-reply-bar {
     display: flex;
     align-items: center;
