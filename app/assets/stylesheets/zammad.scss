@@ -16302,9 +16302,9 @@ body.is-customer-portal {
     padding: 0;
     color: var(--cp-ink);
     background: var(--cp-bg);
-    min-height: 100%;
-    max-width: 1100px;
-    margin: 0 auto;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
   }
 
   .cp-screen-head {
@@ -16453,6 +16453,7 @@ body.is-customer-portal {
     grid-template-columns: 1fr 1fr;
     gap: 26px;
     padding: 30px 48px 54px;
+    flex: 1;
   }
 
   .cp-card {
@@ -16462,7 +16463,6 @@ body.is-customer-portal {
     overflow: hidden;
     display: flex;
     flex-direction: column;
-    min-height: 500px;
   }
 
   .cp-card-head {
