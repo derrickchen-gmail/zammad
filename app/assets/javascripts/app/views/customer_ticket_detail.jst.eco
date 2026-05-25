@@ -62,13 +62,17 @@
     <% else: %>
     <div class="cp-reply">
       <textarea class="js-reply-body" rows="3" placeholder="<%- @T('Type your reply…') %>"><%= @draft %></textarea>
+      <div class="js-reply-attachments cp-reply-attachments"></div>
       <div class="cp-reply-bar">
         <div class="cp-reply-bar-left">
-          <span class="cp-muted"><%- @T('Click Send to post your reply.') %></span>
+          <label class="cp-attach-trigger">
+            <input type="file" class="js-reply-file" multiple hidden>
+            📎 <%- @T('Drag images here, or click the paperclip') %>
+          </label>
         </div>
         <div class="cp-reply-bar-right">
           <button class="cp-btn cp-btn--ghost js-discard"><%- @T('Discard') %></button>
-          <button class="cp-btn cp-btn--primary js-send"><%- @T('Send reply') %></button>
+          <button class="cp-btn cp-btn--primary js-send">→ <%- @T('Send reply') %></button>
         </div>
       </div>
     </div>
