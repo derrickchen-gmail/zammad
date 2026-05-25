@@ -154,6 +154,14 @@ class App.CustomerTicketDetail extends App.Controller
       a = App.TicketArticle.find(id)
       continue if !a
       who = @authorOf(a)
+      attachments = []
+      if a.attachments
+        for att in a.attachments
+          attachments.push
+            id:       att.id
+            filename: att.filename
+            size:     att.size
+            url:      "#{@apiPath}/ticket_attachment/#{@ticket_id}/#{a.id}/#{att.id}"
       rows.push
         id:            a.id
         body:          a.body
@@ -161,6 +169,7 @@ class App.CustomerTicketDetail extends App.Controller
         created_at:    a.created_at
         isAgent:       who.isAgent
         displayAuthor: who.name
+        attachments:   attachments
     rows
 
   render: =>
