@@ -19,7 +19,7 @@
       </label>
 
       <label class="cp-field">
-        <span class="cp-field-lbl"><%- @T('Products') %></span>
+        <span class="cp-field-lbl"><%- @T('Group/Team') %></span>
         <select name="group_id">
           <% for g in @groups: %>
           <option value="<%= g.id %>"><%= g.name %></option>
